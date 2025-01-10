@@ -9,6 +9,9 @@
   background-color: #f8f8f8;
   padding: 0.5rem;
   border-bottom: #dfdfdf 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .calendar-body {
   display: grid;
@@ -22,4 +25,28 @@
   padding: 0.8rem;
   background-color: #f9f9f9;
   box-shadow: #dfdfdf 0 0 0 1px;
+}
+
+.chevron-button {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    background-color: #ebebeb;
+    cursor: pointer;
+  }
+}
+.date-label {
+  font-size: 1.125rem;
+}
+.header-section {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }

@@ -5,7 +5,12 @@
   }"
 >
   <div class="container">
-    <div class="day-number">
+    <div
+      class="day-number"
+      [ngClass]="{
+        today: calendarDay.isToday
+      }"
+    >
       {{ calendarDay.date.getDate() }}
     </div>
   </div>

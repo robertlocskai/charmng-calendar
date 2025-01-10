@@ -3,4 +3,5 @@ export interface CalendarDay {
   currentMonth: boolean;
   visible: boolean;
   active: boolean;
+  isToday: boolean;
 }

@@ -12,6 +12,9 @@
 
   &:hover .day-number {
     background-color: rgb(240, 240, 240);
+    &.today {
+      background-color: #e1814a;
+    }
   }
 
   & > .container {
@@ -26,4 +29,9 @@
   justify-content: center;
   align-items: center;
   border-radius: 100%;
+
+  &.today {
+    background-color: #ef9058;
+    color: white;
+  }
 }
