@@ -1,0 +1,29 @@
+.calendar-day {
+  padding: 1rem;
+  box-shadow: 0 0 0 1px #dfdfdf;
+  min-width: 12rem;
+  min-height: 7rem;
+  background-color: #fff;
+
+  &.inactive {
+    background-color: #f3f3f3;
+    color: #a9a9a9;
+  }
+
+  &:hover .day-number {
+    background-color: rgb(240, 240, 240);
+  }
+
+  & > .container {
+    display: flex;
+  }
+}
+
+.day-number {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}

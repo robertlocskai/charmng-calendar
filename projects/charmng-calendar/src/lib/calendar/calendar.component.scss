@@ -1,0 +1,25 @@
+.calendar-container {
+  border: #dfdfdf 1px solid;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.calendar-header {
+  background-color: #f8f8f8;
+  padding: 0.5rem;
+  border-bottom: #dfdfdf 1px solid;
+}
+.calendar-body {
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(7, 1fr);
+
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.calendar-col-title {
+  padding: 0.8rem;
+  background-color: #f9f9f9;
+  box-shadow: #dfdfdf 0 0 0 1px;
+}

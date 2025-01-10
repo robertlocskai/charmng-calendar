@@ -1,0 +1,12 @@
+<div
+  class="calendar-day"
+  [ngClass]="{
+    inactive: !calendarDay.active
+  }"
+>
+  <div class="container">
+    <div class="day-number">
+      {{ calendarDay.date.getDate() }}
+    </div>
+  </div>
+</div>
