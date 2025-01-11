@@ -1,0 +1,20 @@
+<button
+  id="first"
+  [ngClass]="{ selected: mode == 'day' }"
+  (click)="changeMode('day')"
+>
+  Day
+</button>
+<button [ngClass]="{ selected: mode == 'week' }" (click)="changeMode('week')">
+  Week
+</button>
+<button [ngClass]="{ selected: mode == 'month' }" (click)="changeMode('month')">
+  Month
+</button>
+<button
+  id="last"
+  [ngClass]="{ selected: mode == 'year' }"
+  (click)="changeMode('year')"
+>
+  Year
+</button>

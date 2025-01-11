@@ -13,8 +13,4 @@ import { CalendarEvent } from '../../interfaces/calendar.event.interface';
 export class CalendarDayComponent {
   @Input({ required: true }) calendarDay!: CalendarDay;
   @Input() events: CalendarEvent[] = [];
-
-  ngOnInit(): void {
-    console.log(this.events);
-  }
 }

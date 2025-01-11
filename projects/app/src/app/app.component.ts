@@ -52,12 +52,52 @@ export class AppComponent {
     this.events$.next([
       ...this.events$.getValue(),
       {
+        name: 'orange event',
+        allDay: true,
+        startDate: new Date(),
+        color: 'orange',
+      },
+    ]);
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'green event',
+        allDay: true,
+        startDate: new Date(),
+        color: 'green',
+      },
+    ]);
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
         name: 'Just an event :)',
         allDay: true,
         startDate: new Date(
           new Date().getFullYear(),
           new Date().getMonth(),
           24
+        ),
+      },
+    ]);
+
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'Just an event :)',
+        allDay: false,
+        startDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate(),
+          new Date().getHours(),
+          new Date().getMinutes()
+        ),
+        endDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate(),
+          new Date().getHours() + 1,
+          new Date().getMinutes()
         ),
       },
     ]);

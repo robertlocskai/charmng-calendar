@@ -12,12 +12,22 @@ import {
 import { CalendarDayComponent } from './calendar-day/calendar-day.component';
 import { MonthEnum } from '../enums/months.enums';
 import { CalendarEvent } from '../interfaces/calendar.event.interface';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { CalendarViewSwitchComponent } from './calendar-view-switch/calendar-view-switch.component';
+import { CommonModule } from '@angular/common';
+import { CalendarDayViewComponent } from './calendar-day-view/calendar-day-view.component';
+
+export type CalendarMode = 'day' | 'week' | 'month' | 'year';
 
 @Component({
   selector: 'CharmCalendar',
   standalone: true,
-  imports: [CalendarDayComponent],
+  imports: [
+    CommonModule,
+    CalendarDayComponent,
+    CalendarDayViewComponent,
+    CalendarViewSwitchComponent,
+  ],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
 })
@@ -33,6 +43,11 @@ export class CalendarComponent implements OnInit {
   lastDayOfMonth: Date = new Date(this.currentYear, this.currentMonth + 1, 0);
 
   //Selected data
+  selectedDate: Date = new Date(
+    this.currentYear,
+    this.currentMonth,
+    this.currentDate.getDate()
+  ); //This date is for day view
   selectedMonth: number = this.currentMonth;
   selectedYear: number = this.currentYear;
   firstDayOfSelectedMonth: Date = new Date(
@@ -63,8 +78,10 @@ export class CalendarComponent implements OnInit {
     'Saturday',
     'Sunday',
   ];
-
   eventList: CalendarEvent[] = [];
+  calendarMode$: BehaviorSubject<CalendarMode> =
+    new BehaviorSubject<CalendarMode>('month');
+  calendarMode: Observable<CalendarMode> = this.calendarMode$.asObservable();
 
   ngOnInit(): void {
     this.initCalendarDays();
@@ -86,7 +103,6 @@ export class CalendarComponent implements OnInit {
         date: date,
         visible: true,
         active: true,
-        currentMonth: true,
         isToday:
           this.currentDate.getDate() == date.getDate() &&
           this.currentMonth == date.getMonth() &&
@@ -111,7 +127,6 @@ export class CalendarComponent implements OnInit {
           date: date,
           visible: false,
           active: false,
-          currentMonth: false,
           isToday: false,
         });
       }

@@ -64,19 +64,19 @@
   max-height: 1.7rem;
 
   &.red {
-    background-color: #e47373;
+    background-color: var(--red);
   }
   &.purple {
-    background-color: #ab73e4;
+    background-color: var(--purple);
   }
   &.orange {
-    background-color: #e49773;
+    background-color: var(--orange);
   }
   &.green {
-    background-color: #5bb364;
+    background-color: var(--green);
   }
   &.blue {
-    background-color: #738ae4;
+    background-color: var(--blue);
   }
 }
 

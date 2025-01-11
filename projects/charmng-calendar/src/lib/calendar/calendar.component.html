@@ -33,16 +33,44 @@
         {{ getMonth(selectedMonth) }} {{ selectedYear }}
       </span>
     </div>
+    <div class="header-section">
+      <lib-calendar-view-switch
+        style="height: 100%"
+        [calendarMode]="calendarMode"
+        (modeChanged)="calendarMode$.next($event)"
+      ></lib-calendar-view-switch>
+    </div>
   </div>
 
-  <div class="calendar-body">
-    @for(day of daysOfWeek; track $index) {
-    <div class="calendar-col-title">{{ day }}</div>
-    } @for(day of calendarDays; track $index) {
-    <lib-calendar-day
-      [calendarDay]="day"
-      [events]="getEventsForDay(day)"
-    ></lib-calendar-day>
-    }
+  <div
+    class="calendar-body"
+    [ngClass]="{
+    'month-view': calendarMode$.getValue() == 'month',
+    'day-view': calendarMode$.getValue() == 'day',
+  }"
+  >
+    <ng-container *ngIf="calendarMode | async as mode">
+      @switch (mode) { @case('day') {
+      <lib-calendar-day-view
+        [day]="selectedDate"
+        [events]="
+          getEventsForDay({
+            date: selectedDate,
+            visible: true,
+            active: true,
+            isToday: true
+          })
+        "
+      ></lib-calendar-day-view>
+      } @case('week') {} @case('month') { @for(day of daysOfWeek; track $index)
+      {
+      <div class="calendar-col-title">{{ day }}</div>
+      } @for(day of calendarDays; track $index) {
+      <lib-calendar-day
+        [calendarDay]="day"
+        [events]="getEventsForDay(day)"
+      ></lib-calendar-day>
+      } } @case('year') {} }
+    </ng-container>
   </div>
 </div>

@@ -1,0 +1,54 @@
+.container {
+  position: relative;
+}
+.allday-container {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.event-allday {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border-left: rgb(142, 142, 142) 2px solid;
+  color: rgb(134, 134, 134);
+  background-color: rgb(245, 245, 245);
+  position: relative;
+
+  &.red {
+    border-left: var(--red) 2px solid;
+    color: var(--red);
+    background-color: var(--red-faded);
+  }
+  &.blue {
+    border-left: var(--blue) 2px solid;
+    color: var(--blue);
+    background-color: var(--blue-faded);
+  }
+  &.green {
+    border-left: var(--green) 2px solid;
+    color: var(--green);
+    background-color: var(--green-faded);
+  }
+  &.orange {
+    border-left: var(--orange) 2px solid;
+    color: var(--orange);
+    background-color: var(--orange-faded);
+  }
+  &.purple {
+    border-left: var(--purple) 2px solid;
+    color: var(--purple);
+    background-color: var(--purple-faded);
+  }
+}
+
+.event-name {
+  position: fixed;
+
+  &.hidden {
+    position: static;
+    opacity: 0;
+  }
+}
