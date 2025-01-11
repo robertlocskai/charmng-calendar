@@ -101,5 +101,47 @@ export class AppComponent {
         ),
       },
     ]);
+
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'A purple event',
+        color: 'purple',
+        allDay: false,
+        startDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate(),
+          14
+        ),
+        endDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate(),
+          16
+        ),
+      },
+    ]);
+
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'A red event',
+        allDay: false,
+        color: 'red',
+        startDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate(),
+          9
+        ),
+        endDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate(),
+          13
+        ),
+      },
+    ]);
   }
 }

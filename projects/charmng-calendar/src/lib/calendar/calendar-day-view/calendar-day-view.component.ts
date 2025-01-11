@@ -13,4 +13,23 @@ import { CommonModule } from '@angular/common';
 export class CalendarDayViewComponent {
   @Input({ required: true }) day!: Date;
   @Input() events: CalendarEvent[] = [];
+
+  calculateStartPercentage(eventStartTime: Date): number {
+    const totalMinutesPastMidnight =
+      eventStartTime.getHours() * 60 + eventStartTime.getMinutes();
+
+    const percentage = (totalMinutesPastMidnight / 1440) * 100;
+
+    return percentage;
+  }
+
+  calculateHeightPercentage(eventStartTime: Date, eventEndTime: Date) {
+    const startTotalMinutes =
+      eventStartTime.getHours() * 60 + eventStartTime.getMinutes();
+    const endTotalMinutes =
+      eventEndTime.getHours() * 60 + eventEndTime.getMinutes();
+
+    const eventDuration = endTotalMinutes - startTotalMinutes;
+    return (eventDuration / 1440) * 100;
+  }
 }
