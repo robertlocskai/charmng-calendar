@@ -1,7 +1,18 @@
-import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
-import { CalendarDay as CalendarMonthDay } from '../interfaces/month-view/calendar.day';
+import {
+  Component,
+  ContentChild,
+  Input,
+  OnInit,
+  TemplateRef,
+} from '@angular/core';
+import {
+  CalendarDay,
+  CalendarDay as CalendarMonthDay,
+} from '../interfaces/month-view/calendar.day';
 import { CalendarDayComponent } from './calendar-day/calendar-day.component';
 import { MonthEnum } from '../enums/months.enums';
+import { CalendarEvent } from '../interfaces/calendar.event.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'CharmCalendar',
@@ -37,6 +48,7 @@ export class CalendarComponent implements OnInit {
   );
 
   //User options (Inputs)
+  @Input({ required: true }) events!: Observable<CalendarEvent[]>;
 
   //Generated blocks
   calendarDays!: CalendarMonthDay[];
@@ -52,8 +64,13 @@ export class CalendarComponent implements OnInit {
     'Sunday',
   ];
 
+  eventList: CalendarEvent[] = [];
+
   ngOnInit(): void {
     this.initCalendarDays();
+    if (!this.events)
+      throw new Error("You have to give an 'Events' observable!");
+    this.events.subscribe((val) => (this.eventList = val));
   }
 
   initCalendarDays(): void {
@@ -131,5 +148,19 @@ export class CalendarComponent implements OnInit {
 
   getMonth(monthNumber: number): string {
     return MonthEnum[monthNumber];
+  }
+
+  isSameDate(date1: Date, date2: Date): boolean {
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
+  }
+
+  getEventsForDay(day: CalendarDay): CalendarEvent[] {
+    return this.eventList.filter((event) =>
+      this.isSameDate(event.startDate, day.date)
+    );
   }
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CharmngCalendarModule } from '../../../charmng-calendar/src/public-api';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { CalendarEvent } from '../../../charmng-calendar/src/lib/interfaces/calendar.event.interface';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +12,54 @@ import { CharmngCalendarModule } from '../../../charmng-calendar/src/public-api'
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'app';
+  events$: BehaviorSubject<CalendarEvent[]> = new BehaviorSubject<
+    CalendarEvent[]
+  >([]);
+  events: Observable<CalendarEvent[]> = this.events$.asObservable();
+
+  ngOnInit(): void {
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'a blue event',
+        allDay: true,
+        startDate: new Date(),
+        color: 'blue',
+      },
+    ]);
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'a purple event',
+        allDay: true,
+        startDate: new Date(),
+        color: 'purple',
+      },
+    ]);
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'a red event',
+        allDay: true,
+        startDate: new Date(),
+        color: 'red',
+      },
+    ]);
+    this.events$.next([
+      ...this.events$.getValue(),
+      { name: 'just an event :)', allDay: true, startDate: new Date() },
+    ]);
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'Just an event :)',
+        allDay: true,
+        startDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          24
+        ),
+      },
+    ]);
+  }
 }

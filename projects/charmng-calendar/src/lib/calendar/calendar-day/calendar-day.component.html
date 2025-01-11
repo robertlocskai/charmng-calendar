@@ -13,5 +13,15 @@
     >
       {{ calendarDay.date.getDate() }}
     </div>
+    <div class="events-container">
+      @for(event of events.length > 2 ? events.slice(0, 2) : events; track
+      $index) {
+      <div class="event" [ngClass]="event.color ? event.color : ''">
+        {{ event.name }}
+      </div>
+      } @if(events.length > 2) {
+      <div class="remaining-events">{{ events.length - 2 }} more</div>
+      }
+    </div>
   </div>
 </div>

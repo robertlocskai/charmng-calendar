@@ -2,8 +2,10 @@
   padding: 1rem;
   box-shadow: 0 0 0 1px #dfdfdf;
   min-width: 12rem;
-  min-height: 7rem;
+  min-height: 8rem;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
 
   &.inactive {
     background-color: #f3f3f3;
@@ -18,11 +20,15 @@
   }
 
   & > .container {
+    gap: 5px;
     display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 }
 
 .day-number {
+  flex: 0 0 auto;
   width: 2rem;
   height: 2rem;
   display: flex;
@@ -34,4 +40,53 @@
     background-color: #ef9058;
     color: white;
   }
+}
+
+.events-container {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  gap: 0.2rem;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.event {
+  flex: 1;
+  background-color: rgb(142, 142, 142);
+  color: white;
+  border-radius: 0.4rem;
+  padding-inline: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  max-height: 1.7rem;
+
+  &.red {
+    background-color: #e47373;
+  }
+  &.purple {
+    background-color: #ab73e4;
+  }
+  &.orange {
+    background-color: #e49773;
+  }
+  &.green {
+    background-color: #5bb364;
+  }
+  &.blue {
+    background-color: #738ae4;
+  }
+}
+
+.remaining-events {
+  flex: 1;
+  background-color: #efefef;
+  color: #9f9f9f;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
 }

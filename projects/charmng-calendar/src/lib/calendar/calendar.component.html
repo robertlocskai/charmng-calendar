@@ -39,7 +39,10 @@
     @for(day of daysOfWeek; track $index) {
     <div class="calendar-col-title">{{ day }}</div>
     } @for(day of calendarDays; track $index) {
-    <lib-calendar-day [calendarDay]="day"></lib-calendar-day>
+    <lib-calendar-day
+      [calendarDay]="day"
+      [events]="getEventsForDay(day)"
+    ></lib-calendar-day>
     }
   </div>
 </div>
