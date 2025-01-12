@@ -55,14 +55,13 @@
 
   & > .event {
     position: absolute;
-    width: 100%;
+    left: 0;
+    right: 0;
     opacity: 0.7;
 
     border-left: rgb(142, 142, 142) 2px solid;
     color: rgb(134, 134, 134);
     background-color: rgb(245, 245, 245);
-
-    padding: 0.4rem 0 0 0.4rem;
 
     &.red {
       border-left: var(--red) 2px solid;
@@ -101,4 +100,10 @@
     position: static;
     opacity: 0;
   }
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.4rem;
 }

@@ -18,7 +18,7 @@ export class CalendarDayViewComponent {
     const totalMinutesPastMidnight =
       eventStartTime.getHours() * 60 + eventStartTime.getMinutes();
 
-    const percentage = (totalMinutesPastMidnight / 1440) * 100;
+    const percentage = (totalMinutesPastMidnight / (24 * 60)) * 100;
 
     return percentage;
   }
@@ -30,6 +30,6 @@ export class CalendarDayViewComponent {
       eventEndTime.getHours() * 60 + eventEndTime.getMinutes();
 
     const eventDuration = endTotalMinutes - startTotalMinutes;
-    return (eventDuration / 1440) * 100;
+    return (eventDuration / (24 * 60)) * 100;
   }
 }

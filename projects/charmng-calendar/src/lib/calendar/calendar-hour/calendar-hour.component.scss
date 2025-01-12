@@ -2,5 +2,6 @@
   padding: 0.5rem 2rem 2rem 2rem;
   height: 4rem;
   color: #888888;
-  border-bottom: #dfdfdf 1px inset;
+  border-bottom: #dfdfdf 1px solid;
+  box-sizing: border-box;
 }

@@ -13,7 +13,13 @@
           '%;'
         "
       >
-        <span class="event-name">{{ event.name }}</span>
+        <div class="event-header">
+          <span class="event-name">{{ event.name }}</span>
+          <span class="event-name"
+            >{{ event.startDate | date : "HH:mm" }} -
+            {{ event.endDate | date : "HH:mm" }}</span
+          >
+        </div>
       </div>
       } }
     </div>
