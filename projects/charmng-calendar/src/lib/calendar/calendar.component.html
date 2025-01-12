@@ -67,6 +67,7 @@
       <div class="calendar-col-title">{{ day }}</div>
       } @for(day of calendarDays; track $index) {
       <lib-calendar-day
+        (dayClicked)="dayClicked($event)"
         [calendarDay]="day"
         [events]="getEventsForDay(day)"
       ></lib-calendar-day>

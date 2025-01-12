@@ -178,4 +178,9 @@ export class CalendarComponent implements OnInit {
       this.isSameDate(event.startDate, day.date)
     );
   }
+
+  dayClicked(date: Date): void {
+    this.selectedDate = date;
+    this.calendarMode$.next('day');
+  }
 }

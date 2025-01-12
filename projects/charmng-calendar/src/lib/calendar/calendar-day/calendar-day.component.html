@@ -3,6 +3,7 @@
   [ngClass]="{
     inactive: !calendarDay.active
   }"
+  (click)="dayClicked.emit(calendarDay.date)"
 >
   <div class="container">
     <div
