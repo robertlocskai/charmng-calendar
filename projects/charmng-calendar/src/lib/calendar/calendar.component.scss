@@ -28,6 +28,12 @@
     max-height: 50rem;
     overflow-y: auto;
   }
+  &.week-view {
+    display: flex;
+    flex-direction: column;
+    max-height: 50rem;
+    overflow-y: auto;
+  }
 }
 .calendar-col-title {
   padding: 0.8rem;

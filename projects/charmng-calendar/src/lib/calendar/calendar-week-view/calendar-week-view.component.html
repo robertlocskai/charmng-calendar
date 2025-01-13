@@ -1,0 +1,45 @@
+<div class="week-container">
+  <div style="height: 4rem; min-width: 3rem"></div>
+  @for(day of days; track $index) {
+
+  <div class="day-label">
+    <div class="day-number">{{ day.getDate() }}</div>
+  </div>
+  }
+</div>
+<div class="week-container">
+  <div>
+    @for(hour of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+    18, 19, 20, 21, 22, 23]; track hour) {
+    <div
+      style="
+        height: 4rem;
+        width: 3rem;
+        border-top: #eccbcb 1px solid;
+        box-sizing: border-box;
+      "
+    >
+      <span
+        style="color: #b1b1b1; transform: translateY(-8px); font-size: 0.8rem"
+        >{{ hour }}:00</span
+      >
+    </div>
+    }
+  </div>
+  @for(day of days; track $index) {
+  <div class="day">
+    <lib-calendar-day-view
+      [day]="day"
+      [child]="true"
+      [events]="
+        getEventsForDay({
+          date: day,
+          visible: true,
+          active: true,
+          isToday: true
+        })
+      "
+    ></lib-calendar-day-view>
+  </div>
+  }
+</div>

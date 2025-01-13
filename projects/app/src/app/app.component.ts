@@ -105,6 +105,15 @@ export class AppComponent {
     this.events$.next([
       ...this.events$.getValue(),
       {
+        name: 'another :)',
+        allDay: true,
+        startDate: new Date(),
+      },
+    ]);
+
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
         name: 'A purple event',
         color: 'purple',
         allDay: false,
@@ -118,6 +127,46 @@ export class AppComponent {
           new Date().getFullYear(),
           new Date().getMonth(),
           new Date().getDate(),
+          16
+        ),
+      },
+    ]);
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'A purple event',
+        color: 'purple',
+        allDay: false,
+        startDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate() + 1,
+          14
+        ),
+        endDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate() + 1,
+          16
+        ),
+      },
+    ]);
+    this.events$.next([
+      ...this.events$.getValue(),
+      {
+        name: 'A purple event',
+        color: 'purple',
+        allDay: false,
+        startDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate() + 3,
+          14
+        ),
+        endDate: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate() + 3,
           16
         ),
       },

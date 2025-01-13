@@ -16,6 +16,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { CalendarViewSwitchComponent } from './calendar-view-switch/calendar-view-switch.component';
 import { CommonModule } from '@angular/common';
 import { CalendarDayViewComponent } from './calendar-day-view/calendar-day-view.component';
+import { CalendarWeekViewComponent } from './calendar-week-view/calendar-week-view.component';
 
 export type CalendarMode = 'day' | 'week' | 'month' | 'year';
 
@@ -27,6 +28,7 @@ export type CalendarMode = 'day' | 'week' | 'month' | 'year';
     CalendarDayComponent,
     CalendarDayViewComponent,
     CalendarViewSwitchComponent,
+    CalendarWeekViewComponent,
   ],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
@@ -182,5 +184,31 @@ export class CalendarComponent implements OnInit {
   dayClicked(date: Date): void {
     this.selectedDate = date;
     this.calendarMode$.next('day');
+  }
+
+  currentWeekDates: Date[] = [];
+  getWeekDays(): Date[] {
+    const startOfWeek = 1;
+    const selectedDay = this.selectedDate.getDay();
+    const differenceToStart = (selectedDay - startOfWeek + 7) % 7;
+    const startDate = new Date(this.selectedDate);
+    startDate.setDate(this.selectedDate.getDate() - differenceToStart);
+
+    const weekDates: Date[] = [];
+    for (let i = 0; i < 7; i++) {
+      const day = new Date(startDate);
+      day.setDate(startDate.getDate() + i);
+      weekDates.push(day);
+    }
+    this.currentWeekDates = weekDates;
+    return weekDates;
+  }
+
+  getWeekEvents() {
+    return this.eventList.filter((event) =>
+      this.currentWeekDates.some((date) =>
+        this.isSameDate(event.startDate, date)
+      )
+    );
   }
 }

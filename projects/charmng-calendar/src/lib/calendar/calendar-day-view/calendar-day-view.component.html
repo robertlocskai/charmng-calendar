@@ -1,6 +1,6 @@
 <div class="container">
   <div class="event-container">
-    <div class="regular-event-container">
+    <div class="regular-event-container" [ngClass]="child ? 'child' : ''">
       @for(event of events; track $index) { @if(!event.allDay) {
       <div
         class="event"
@@ -23,17 +23,23 @@
       </div>
       } }
     </div>
-    <div class="allday-container">
-      @for(event of events; track $index) { @if(event.allDay) {
-      <div class="event-allday" [ngClass]="event.color ?? ''">
+    <div class="allday-container" [ngClass]="child ? 'child' : ''">
+      @for(event of events.length > (child ? 3 : 5) ? (child ? events.splice(0,
+      2) : events.splice(0, 5)) : events; track $index) { @if(event.allDay) {
+      <div
+        class="event-allday"
+        [ngClass]="[event.color ?? '', child ? 'child' : '']"
+      >
+        @if(!child) {
         <span class="event-name fixed">{{ event.name }}</span>
         <span class="event-name hidden">{{ event.name }}</span>
+        }
       </div>
       } }
     </div>
   </div>
   @for(hour of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
   18, 19, 20, 21, 22, 23]; track hour) {
-  <lib-calendar-hour [hour]="hour"></lib-calendar-hour>
+  <lib-calendar-hour [hour]="hour" [child]="child"></lib-calendar-hour>
   }
 </div>

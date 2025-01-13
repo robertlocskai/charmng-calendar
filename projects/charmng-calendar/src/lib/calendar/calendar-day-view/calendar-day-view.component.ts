@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class CalendarDayViewComponent {
   @Input({ required: true }) day!: Date;
   @Input() events: CalendarEvent[] = [];
+  @Input() child: boolean = false;
 
   calculateStartPercentage(eventStartTime: Date): number {
     const totalMinutesPastMidnight =

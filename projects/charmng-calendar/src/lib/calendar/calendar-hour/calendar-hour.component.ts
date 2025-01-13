@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class CalendarHourComponent {
   @Input({ required: true }) hour!: number;
+  @Input() child: boolean = false;
 }

@@ -47,6 +47,7 @@
     [ngClass]="{
     'month-view': calendarMode$.getValue() == 'month',
     'day-view': calendarMode$.getValue() == 'day',
+    'week-view': calendarMode$.getValue() == 'week',
   }"
   >
     <ng-container *ngIf="calendarMode | async as mode">
@@ -62,8 +63,12 @@
           })
         "
       ></lib-calendar-day-view>
-      } @case('week') {} @case('month') { @for(day of daysOfWeek; track $index)
-      {
+      } @case('week') {
+      <lib-calendar-week-view
+        [days]="getWeekDays()"
+        [weekEvents]="getWeekEvents()"
+      ></lib-calendar-week-view>
+      } @case('month') { @for(day of daysOfWeek; track $index) {
       <div class="calendar-col-title">{{ day }}</div>
       } @for(day of calendarDays; track $index) {
       <lib-calendar-day

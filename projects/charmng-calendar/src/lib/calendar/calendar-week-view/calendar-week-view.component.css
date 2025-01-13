@@ -1,0 +1,28 @@
+.week-container {
+  display: flex;
+  width: 100%;
+  gap: 1px;
+}
+
+.day {
+  flex: 1;
+  box-shadow: rgb(219, 219, 219) 0 0 0 1px;
+}
+
+.day-label {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 10rem;
+}
+.day-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--red);
+  border-radius: 100%;
+}
