@@ -1,7 +1,12 @@
 <div class="calendar-container">
   <div class="calendar-header">
     <div class="header-section">
-      <button class="chevron-button" (click)="previousMonth()">
+      <button
+        class="chevron-button"
+        (click)="
+          calendarMode$.getValue() === 'month' ? previousMonth() : previousDay()
+        "
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -15,7 +20,10 @@
           />
         </svg>
       </button>
-      <button class="chevron-button" (click)="nextMonth()">
+      <button
+        class="chevron-button"
+        (click)="calendarMode$.getValue() === 'month' ? nextMonth() : nextDay()"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -30,7 +38,11 @@
         </svg>
       </button>
       <span class="date-label">
-        {{ getMonth(selectedMonth) }} {{ selectedYear }}
+        {{ getMonth(selectedMonth)
+        }}{{
+          calendarMode$.getValue() == "day" ? " " + selectedDate.getDate() : ""
+        }},
+        {{ selectedYear }}
       </span>
     </div>
     <div class="header-section">

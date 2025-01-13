@@ -147,6 +147,22 @@ export class CalendarComponent implements OnInit {
     this.initCalendarDays();
   }
 
+  previousDay(): void {
+    this.selectedDate = new Date(
+      this.selectedDate.getFullYear(),
+      this.selectedDate.getMonth(),
+      this.selectedDate.getDate() - 1
+    );
+  }
+
+  nextDay(): void {
+    this.selectedDate = new Date(
+      this.selectedDate.getFullYear(),
+      this.selectedDate.getMonth(),
+      this.selectedDate.getDate() + 1
+    );
+  }
+
   setSelectedData(selectedDate: Date): void {
     this.selectedMonth = selectedDate.getMonth();
     this.selectedYear = selectedDate.getFullYear();

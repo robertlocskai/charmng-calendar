@@ -9,7 +9,7 @@ import { CalendarHourComponent } from '../calendar-hour/calendar-hour.component'
   standalone: true,
   imports: [CalendarDayViewComponent, CalendarHourComponent],
   templateUrl: './calendar-week-view.component.html',
-  styleUrl: './calendar-week-view.component.css',
+  styleUrl: './calendar-week-view.component.scss',
 })
 export class CalendarWeekViewComponent {
   @Input({ required: true }) days!: Date[];
